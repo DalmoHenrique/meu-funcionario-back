@@ -26,14 +26,14 @@ namespace meu_funcionario_back
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<FuncionarioContext>(
-            //    context => context.UseSqlite(Configuration.GetConnectionString("Default")));
-            
+            /**
+             * Utilizar do SQL Server junto com o uso da Connect String para conectar com o banco de dados
+             */
             services.AddDbContextPool<FuncionarioContext>(
                 option => option.UseSqlServer("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MeuFuncionarioDB;Data Source=localhost\\MSSQLLocalDB"));
 
 
-            // Não causar bloqueio nas requisições da API
+            // Não causar bloqueio nas requisições da API por conta do Cors. Além de ser adicionado o mesmo precisa ser executado no método de Configure abaixo, setando como 'UseCors'
             services.AddCors(options => {
                 options.AddDefaultPolicy(
                     builder =>
@@ -56,7 +56,7 @@ namespace meu_funcionario_back
 
             app.UseRouting();
 
-            // Usar o Cors
+            // Utilizar o Cors
             app.UseCors();
 
             app.UseAuthorization();

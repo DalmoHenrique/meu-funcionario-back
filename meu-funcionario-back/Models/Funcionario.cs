@@ -7,6 +7,9 @@ namespace meu_funcionario_back.Models
 {
     public class Funcionario
     {
+        /**
+         * Criação dos construtores e das properties de acordo com os campos do Funcionário 
+         */
         public Funcionario(){}
 
         public Funcionario(int id, string nome, string endereco, DateTime dataNascimento, double salario, string genero)

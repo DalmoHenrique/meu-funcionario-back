@@ -15,6 +15,10 @@ namespace meu_funcionario_back.Controllers
     [EnableCors()]
     public class FuncionarioController : ControllerBase
     {
+
+        /**
+         * Inicialização do contexto do Funcionário na Controller
+         */
         private readonly FuncionarioContext _context;
 
         public FuncionarioController(FuncionarioContext context)
@@ -23,7 +27,9 @@ namespace meu_funcionario_back.Controllers
         }
 
 
-
+        /**
+         * Todas as requisições REST para realizar um GET, POST, PUT ou DELETE
+         */
 
         // GET: api/funcionario
         [HttpGet]
@@ -53,18 +59,6 @@ namespace meu_funcionario_back.Controllers
         // PUT
         [HttpPut("alterar/{id}")]
         public IActionResult Put(int id, Funcionario funcionario)
-        {
-            var func = _context.Funcionarios.AsNoTracking().FirstOrDefault(t => t.Id == id);
-            if (func == null) return BadRequest("Funcionário não localizado");
-
-            _context.Update(funcionario);
-            _context.SaveChanges();
-            return Ok(funcionario);
-        }
-
-        // PATCH
-        [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Funcionario funcionario)
         {
             var func = _context.Funcionarios.AsNoTracking().FirstOrDefault(t => t.Id == id);
             if (func == null) return BadRequest("Funcionário não localizado");

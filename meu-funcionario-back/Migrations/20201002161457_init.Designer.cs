@@ -10,7 +10,7 @@ using meu_funcionario_back.Data;
 namespace meu_funcionario_back.Migrations
 {
     [DbContext(typeof(FuncionarioContext))]
-    [Migration("20201002002849_init")]
+    [Migration("20201002161457_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
