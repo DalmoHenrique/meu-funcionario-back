@@ -26,10 +26,14 @@ namespace meu_funcionario_back
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Não causar bloqueio nas requisições da API
-            services.AddDbContext<FuncionarioContext>(
-                context => context.UseSqlite(Configuration.GetConnectionString("Default")));
+            //services.AddDbContext<FuncionarioContext>(
+            //    context => context.UseSqlite(Configuration.GetConnectionString("Default")));
+            
+            services.AddDbContextPool<FuncionarioContext>(
+                option => option.UseSqlServer("Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=MeuFuncionarioDB;Data Source=localhost\\MSSQLLocalDB"));
 
+
+            // Não causar bloqueio nas requisições da API
             services.AddCors(options => {
                 options.AddDefaultPolicy(
                     builder =>

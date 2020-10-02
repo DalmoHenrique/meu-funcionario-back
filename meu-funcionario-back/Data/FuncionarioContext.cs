@@ -17,13 +17,5 @@ namespace meu_funcionario_back.Data
 
         public DbSet<Funcionario> Funcionarios { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Funcionario>()
-                .HasData(new List<Funcionario>(){
-                    new Funcionario(1, "Dalmo", "Rua José, 19", DateTime.Now, 2020.20, "Masculino"),
-                });
-        }
-
     }
 }

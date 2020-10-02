@@ -12,7 +12,7 @@ namespace meu_funcionario_back.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(nullable: true),
                     Endereco = table.Column<string>(nullable: true),
                     DataNascimento = table.Column<DateTime>(nullable: false),
@@ -23,11 +23,6 @@ namespace meu_funcionario_back.Migrations
                 {
                     table.PrimaryKey("PK_Funcionarios", x => x.Id);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Funcionarios",
-                columns: new[] { "Id", "DataNascimento", "Endereco", "Genero", "Nome", "Salario" },
-                values: new object[] { 1, new DateTime(2020, 9, 28, 14, 49, 12, 912, DateTimeKind.Local).AddTicks(227), "Rua José, 19", "Masculino", "Dalmo", 2020.2 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
